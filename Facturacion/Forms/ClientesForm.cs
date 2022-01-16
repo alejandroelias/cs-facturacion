@@ -12,6 +12,8 @@ namespace Facturacion.Forms
 {
     public partial class ClientesForm : Form
     {
+        private string condicionPagoValue = "Contado";
+
         public ClientesForm()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace Facturacion.Forms
         private void ClientesForm_Load(object sender, EventArgs e)
         {
             txtDiasCredito.Enabled = false;
+            txtCodigo.Enabled = false;
 
             List<Model.ViewModel.DepartamentoViewModel> listDepartamentos = new List<Model.ViewModel.DepartamentoViewModel>();
             using (Model.DemoDB data = new Model.DemoDB())
@@ -35,15 +38,60 @@ namespace Facturacion.Forms
             cboDepartamento.ValueMember = "Descripcion";
             cboDepartamento.DisplayMember = "Descripcion";
         }
-
+         
         private void rbContado_CheckedChanged(object sender, EventArgs e)
         {
             txtDiasCredito.Enabled = false;
+            condicionPagoValue = "Contado";
+            //diasCreditoValue = 0;
         }
-
+       
         private void rbCredito_CheckedChanged(object sender, EventArgs e)
         {
             txtDiasCredito.Enabled = true;
+            condicionPagoValue = "Credito";
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+     
+            string nombreT = txtNombre.Text.Trim();
+            string direccionT = txtDireccion.Text.Trim();
+            string departamentoT = (string)cboDepartamento.SelectedValue;
+            string numRegistroT = txtMRegistro.Text.Trim();
+            string numNitT = txtMNit.Text.Trim();
+            string giroT = txtGiro.Text.Trim();
+            string condicionPagoT = condicionPagoValue;
+            int fk_id_departT = 1; //TODO: obtener
+
+            int diasCreditoValue = 0;
+            if (rbCredito.Checked)
+            {
+                diasCreditoValue = int.Parse(txtDiasCredito.Text.Trim());
+            }
+            if (rbContado.Checked)
+            {
+                diasCreditoValue = 0;
+            }
+
+            using (Model.DemoDB context = new Model.DemoDB())
+            {
+                Model.CLIENTES clientes = new Model.CLIENTES
+                {
+                    fk_id_depart = fk_id_departT,
+                    nombre = nombreT,
+                    direccion = direccionT,
+                    departamento = departamentoT,
+                    num_registro = numRegistroT,
+                    num_nit = numNitT,
+                    giro = giroT,
+                    condicion_pago = condicionPagoT,
+                    dias_credito = diasCreditoValue
+                };
+                context.CLIENTES.Add(clientes);
+                context.SaveChanges();
+                // TODO: loadData();
+            }
         }
     }
 }
