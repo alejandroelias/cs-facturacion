@@ -8,6 +8,7 @@ namespace Facturacion.Model.ViewModel
 {
     public class DepartamentoViewModel
     {
+        public int ID { get; set; }
         public string Codigo { get; set;}
         public string Descripcion { get; set; }
     }

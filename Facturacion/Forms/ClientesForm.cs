@@ -30,12 +30,13 @@ namespace Facturacion.Forms
                 listDepartamentos = (from tbl in data.DEPARTAMENTOS
                                      select new Model.ViewModel.DepartamentoViewModel
                                      {
+                                         ID = tbl.id_depart,
                                          Codigo = tbl.codigo,
                                          Descripcion = tbl.descripcion
                                      }).ToList();
             }
             cboDepartamento.DataSource = listDepartamentos;
-            cboDepartamento.ValueMember = "Descripcion";
+            cboDepartamento.ValueMember = "ID";
             cboDepartamento.DisplayMember = "Descripcion";
         }
          
@@ -57,12 +58,12 @@ namespace Facturacion.Forms
      
             string nombreT = txtNombre.Text.Trim();
             string direccionT = txtDireccion.Text.Trim();
-            string departamentoT = (string)cboDepartamento.SelectedValue;
+            string departamentoT = cboDepartamento.Text;
             string numRegistroT = txtMRegistro.Text.Trim();
             string numNitT = txtMNit.Text.Trim();
             string giroT = txtGiro.Text.Trim();
             string condicionPagoT = condicionPagoValue;
-            int fk_id_departT = 1; //TODO: obtener
+            int fk_id_departT = (int)cboDepartamento.SelectedValue;
 
             int diasCreditoValue = 0;
             if (rbCredito.Checked)
