@@ -24,6 +24,17 @@ namespace Facturacion.Forms
             txtDiasCredito.Enabled = false;
             txtCodigo.Enabled = false;
 
+            List<Model.ViewModel.DepartamentoViewModel> listDepartamentos = loadDataDepartamentos();
+
+            //TODO: load data clientes
+
+            cboDepartamento.DataSource = listDepartamentos;
+            cboDepartamento.ValueMember = "ID";
+            cboDepartamento.DisplayMember = "Descripcion";
+        }
+
+        private static List<Model.ViewModel.DepartamentoViewModel> loadDataDepartamentos()
+        {
             List<Model.ViewModel.DepartamentoViewModel> listDepartamentos = new List<Model.ViewModel.DepartamentoViewModel>();
             using (Model.DemoDB data = new Model.DemoDB())
             {
@@ -35,9 +46,7 @@ namespace Facturacion.Forms
                                          Descripcion = tbl.descripcion
                                      }).ToList();
             }
-            cboDepartamento.DataSource = listDepartamentos;
-            cboDepartamento.ValueMember = "ID";
-            cboDepartamento.DisplayMember = "Descripcion";
+            return listDepartamentos;
         }
          
         private void rbContado_CheckedChanged(object sender, EventArgs e)

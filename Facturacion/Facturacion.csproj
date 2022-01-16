@@ -104,6 +104,8 @@
     <Compile Include="Model\USUARIOS.cs">
       <DependentUpon>EntityDemo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ViewModel\ArticuloViewModel.cs" />
+    <Compile Include="Model\ViewModel\ClienteViewModel.cs" />
     <Compile Include="Model\ViewModel\DepartamentoViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
