@@ -99,7 +99,7 @@
             // 
             // txtGiro
             // 
-            this.txtGiro.Location = new System.Drawing.Point(111, 148);
+            this.txtGiro.Location = new System.Drawing.Point(111, 151);
             this.txtGiro.Name = "txtGiro";
             this.txtGiro.Size = new System.Drawing.Size(356, 20);
             this.txtGiro.TabIndex = 18;
@@ -145,7 +145,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(80, 154);
+            this.label7.Location = new System.Drawing.Point(80, 156);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 11;
@@ -222,7 +222,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 96);
+            this.label3.Location = new System.Drawing.Point(32, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 6;
@@ -231,7 +231,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(81, 137);
+            this.label2.Location = new System.Drawing.Point(81, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 4;
@@ -239,7 +239,7 @@
             // 
             // txtMNit
             // 
-            this.txtMNit.Location = new System.Drawing.Point(111, 131);
+            this.txtMNit.Location = new System.Drawing.Point(111, 130);
             this.txtMNit.Mask = "0000-000000-000-0";
             this.txtMNit.Name = "txtMNit";
             this.txtMNit.Size = new System.Drawing.Size(356, 20);
