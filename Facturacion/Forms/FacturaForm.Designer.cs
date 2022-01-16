@@ -43,7 +43,7 @@
             this.cboCliente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvFactura = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtExistencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +64,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -81,13 +83,15 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(899, 460);
-            this.splitContainer1.SplitterDistance = 153;
+            this.splitContainer1.SplitterDistance = 168;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtExistencia);
             this.groupBox2.Controls.Add(this.btnAgregar);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtPrecio);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtCantidad);
@@ -96,24 +100,25 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 102);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(899, 51);
+            this.groupBox2.Size = new System.Drawing.Size(899, 66);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ARTICULO";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(812, 17);
+            this.btnAgregar.Location = new System.Drawing.Point(812, 19);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 29);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 38);
             this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Add";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(596, 25);
+            this.label5.Location = new System.Drawing.Point(618, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 6;
@@ -121,7 +126,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(659, 21);
+            this.txtPrecio.Location = new System.Drawing.Point(659, 19);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(137, 20);
             this.txtPrecio.TabIndex = 7;
@@ -129,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(381, 25);
+            this.label4.Location = new System.Drawing.Point(422, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 4;
@@ -137,7 +142,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(443, 21);
+            this.txtCantidad.Location = new System.Drawing.Point(473, 19);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(137, 20);
             this.txtCantidad.TabIndex = 4;
@@ -145,15 +150,16 @@
             // cboArticulo
             // 
             this.cboArticulo.FormattingEnabled = true;
-            this.cboArticulo.Location = new System.Drawing.Point(69, 21);
+            this.cboArticulo.Location = new System.Drawing.Point(69, 19);
             this.cboArticulo.Name = "cboArticulo";
-            this.cboArticulo.Size = new System.Drawing.Size(306, 21);
+            this.cboArticulo.Size = new System.Drawing.Size(326, 21);
             this.cboArticulo.TabIndex = 5;
+            this.cboArticulo.SelectedValueChanged += new System.EventHandler(this.cboArticulo_SelectedValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 25);
+            this.label3.Location = new System.Drawing.Point(20, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 4;
@@ -216,7 +222,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Panel1.Controls.Add(this.dgvFactura);
             // 
             // splitContainer2.Panel2
             // 
@@ -228,24 +234,24 @@
             this.splitContainer2.Panel2.Controls.Add(this.label8);
             this.splitContainer2.Panel2.Controls.Add(this.label7);
             this.splitContainer2.Panel2.Controls.Add(this.label6);
-            this.splitContainer2.Size = new System.Drawing.Size(899, 303);
-            this.splitContainer2.SplitterDistance = 174;
+            this.splitContainer2.Size = new System.Drawing.Size(899, 288);
+            this.splitContainer2.SplitterDistance = 165;
             this.splitContainer2.TabIndex = 0;
             // 
-            // dataGridView1
+            // dgvFactura
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(899, 174);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvFactura.BackgroundColor = System.Drawing.Color.White;
+            this.dgvFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFactura.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFactura.Location = new System.Drawing.Point(0, 0);
+            this.dgvFactura.Name = "dgvFactura";
+            this.dgvFactura.Size = new System.Drawing.Size(899, 165);
+            this.dgvFactura.TabIndex = 0;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(443, 56);
+            this.btnSalir.Location = new System.Drawing.Point(448, 45);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(117, 57);
             this.btnSalir.TabIndex = 16;
@@ -254,7 +260,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(286, 56);
+            this.btnGuardar.Location = new System.Drawing.Point(291, 45);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(117, 57);
             this.btnGuardar.TabIndex = 15;
@@ -273,7 +279,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(670, 103);
+            this.label10.Location = new System.Drawing.Point(670, 96);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 13);
             this.label10.TabIndex = 13;
@@ -315,6 +321,24 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "SON";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(416, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Existencia";
+            // 
+            // txtExistencia
+            // 
+            this.txtExistencia.BackColor = System.Drawing.Color.Yellow;
+            this.txtExistencia.Enabled = false;
+            this.txtExistencia.Location = new System.Drawing.Point(473, 37);
+            this.txtExistencia.Name = "txtExistencia";
+            this.txtExistencia.Size = new System.Drawing.Size(137, 20);
+            this.txtExistencia.TabIndex = 10;
+            // 
             // FacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,7 +365,7 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,7 +374,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvFactura;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboCliente;
@@ -372,6 +396,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtExistencia;
 
 
     }
