@@ -128,7 +128,13 @@ namespace Facturacion.Forms
             cboArticulo.DisplayMember = "ArticuloDescripcion";
 
             txtFecha.Text = DateTime.Now.ToString();
-            
+
+            cboCliente.TabIndex = 0;
+            cboArticulo.TabIndex = 1;
+            txtCantidad.TabIndex = 2;
+            txtPrecio.TabIndex = 3;
+            btnAgregar.TabIndex = 4;
+
         }
         private void cboCliente_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -235,6 +241,9 @@ namespace Facturacion.Forms
                         }
                         data.SaveChanges();
                         dataContextTrans.Commit();
+
+                        MessageBox.Show("Documento guardado", "FACTURACION", MessageBoxButtons.OK);
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
@@ -243,6 +252,15 @@ namespace Facturacion.Forms
                 }
             }
         }
+        #endregion
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region Validaciones
+
         #endregion
 
     }
