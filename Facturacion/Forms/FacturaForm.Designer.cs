@@ -33,6 +33,7 @@
             this.txtCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtPrecio = new System.Windows.Forms.NumericUpDown();
             this.txtExistencia = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,6 +64,8 @@
             this.ArticuloId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.lblSumCantidad = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,9 +76,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblSumas = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -159,6 +159,17 @@
             this.txtExistencia.ReadOnly = true;
             this.txtExistencia.Size = new System.Drawing.Size(137, 20);
             this.txtExistencia.TabIndex = 10;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.Lime;
+            this.btnAgregar.Image = global::Facturacion.Properties.Resources.add3;
+            this.btnAgregar.Location = new System.Drawing.Point(810, 15);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(62, 42);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label5
             // 
@@ -463,6 +474,26 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 117);
             this.flowLayoutPanel1.TabIndex = 20;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Facturacion.Properties.Resources.logout;
+            this.btnSalir.Location = new System.Drawing.Point(3, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(73, 57);
+            this.btnSalir.TabIndex = 16;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Image = global::Facturacion.Properties.Resources.diskette;
+            this.btnGuardar.Location = new System.Drawing.Point(82, 3);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(111, 57);
+            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // lblSumCantidad
             // 
             this.lblSumCantidad.AutoSize = true;
@@ -566,47 +597,20 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Total";
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.Color.Lime;
-            this.btnAgregar.Image = global::Facturacion.Properties.Resources.add3;
-            this.btnAgregar.Location = new System.Drawing.Point(810, 15);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(62, 42);
-            this.btnAgregar.TabIndex = 8;
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::Facturacion.Properties.Resources.logout;
-            this.btnSalir.Location = new System.Drawing.Point(3, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(73, 57);
-            this.btnSalir.TabIndex = 16;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Image = global::Facturacion.Properties.Resources.diskette;
-            this.btnGuardar.Location = new System.Drawing.Point(82, 3);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(111, 57);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // FacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(899, 460);
+            this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FacturaForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturacion";
             this.Load += new System.EventHandler(this.FacturaForm_Load);

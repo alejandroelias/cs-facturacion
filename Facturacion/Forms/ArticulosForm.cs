@@ -78,6 +78,7 @@ namespace Facturacion.Forms
         }
         private void dgvArticulos_Click(object sender, EventArgs e)
         {
+            this.txtCodigo.Text = dgvArticulos.SelectedRows[0].Cells[0].Value.ToString();
             this.txtDescripcion.Text = dgvArticulos.SelectedRows[0].Cells[1].Value.ToString();
             this.txtNExistencia.Text = dgvArticulos.SelectedRows[0].Cells[2].Value.ToString();
         }
@@ -115,6 +116,11 @@ namespace Facturacion.Forms
             {
                 return;
             }
+        }
+
+        private void btnOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

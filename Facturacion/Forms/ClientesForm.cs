@@ -222,5 +222,10 @@ namespace Facturacion.Forms
             }
             
         }
+
+        private void tbnOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

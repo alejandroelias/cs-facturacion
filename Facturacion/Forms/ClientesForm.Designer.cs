@@ -47,20 +47,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMNit = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDiasCredito = new System.Windows.Forms.NumericUpDown();
             this.rbCredito = new System.Windows.Forms.RadioButton();
             this.rbContado = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cboDepartamento = new System.Windows.Forms.ComboBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.txtDiasCredito = new System.Windows.Forms.NumericUpDown();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbnOut = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiasCredito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -93,8 +95,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvClientes);
-            this.splitContainer1.Size = new System.Drawing.Size(639, 531);
-            this.splitContainer1.SplitterDistance = 283;
+            this.splitContainer1.Size = new System.Drawing.Size(899, 460);
+            this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.TabIndex = 0;
             // 
             // txtGiro
@@ -175,10 +177,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnUpdate,
-            this.btnDelete});
+            this.btnDelete,
+            this.toolStripSeparator1,
+            this.tbnOut});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(639, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(899, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -253,12 +257,19 @@
             this.groupBox1.Controls.Add(this.rbCredito);
             this.groupBox1.Controls.Add(this.rbContado);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(111, 174);
+            this.groupBox1.Location = new System.Drawing.Point(510, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 84);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Condicion  de pago";
+            // 
+            // txtDiasCredito
+            // 
+            this.txtDiasCredito.Location = new System.Drawing.Point(192, 38);
+            this.txtDiasCredito.Name = "txtDiasCredito";
+            this.txtDiasCredito.Size = new System.Drawing.Size(120, 20);
+            this.txtDiasCredito.TabIndex = 19;
             // 
             // rbCredito
             // 
@@ -310,24 +321,36 @@
             this.dgvClientes.Location = new System.Drawing.Point(0, 0);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(639, 244);
+            this.dgvClientes.Size = new System.Drawing.Size(899, 271);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.Click += new System.EventHandler(this.dgvClientes_Click);
             // 
-            // txtDiasCredito
+            // toolStripSeparator1
             // 
-            this.txtDiasCredito.Location = new System.Drawing.Point(192, 38);
-            this.txtDiasCredito.Name = "txtDiasCredito";
-            this.txtDiasCredito.Size = new System.Drawing.Size(120, 20);
-            this.txtDiasCredito.TabIndex = 19;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tbnOut
+            // 
+            this.tbnOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbnOut.Image = global::Facturacion.Properties.Resources.logout;
+            this.tbnOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbnOut.Name = "tbnOut";
+            this.tbnOut.Size = new System.Drawing.Size(23, 22);
+            this.tbnOut.Text = "toolStripButton1";
+            this.tbnOut.Click += new System.EventHandler(this.tbnOut_Click);
             // 
             // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 531);
+            this.ClientSize = new System.Drawing.Size(899, 460);
+            this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Name = "ClientesForm";
+            this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.ClientesForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -339,8 +362,8 @@
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiasCredito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -372,5 +395,7 @@
         private System.Windows.Forms.TextBox txtGiro;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.NumericUpDown txtDiasCredito;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tbnOut;
     }
 }
