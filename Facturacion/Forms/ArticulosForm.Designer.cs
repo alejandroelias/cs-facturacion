@@ -118,12 +118,17 @@
             // 
             // dgvArticulos
             // 
+            this.dgvArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(0, 0);
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(378, 244);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.Click += new System.EventHandler(this.dgvArticulos_Click);
             // 
             // txtCodigo
             // 
@@ -142,6 +147,7 @@
             // 
             // txtNExistencia
             // 
+            this.txtNExistencia.BackColor = System.Drawing.Color.Yellow;
             this.txtNExistencia.Location = new System.Drawing.Point(82, 84);
             this.txtNExistencia.Name = "txtNExistencia";
             this.txtNExistencia.Size = new System.Drawing.Size(269, 20);
@@ -178,6 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(378, 378);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ArticulosForm";
