@@ -90,6 +90,28 @@ namespace Facturacion.Forms
             }
             return listArticulos;
         }
+        private void totales()
+        {
+            int sumCantidad = 0;
+            decimal sumas = 0;
+            decimal iva = 0;
+
+            foreach (DataGridViewRow gr in dgvFactura.Rows)
+            {
+                int cantidad = int.Parse(gr.Cells[0].Value.ToString());
+                sumCantidad += cantidad;
+
+                decimal ventasGravadas = decimal.Parse(gr.Cells[3].Value.ToString());
+                sumas += ventasGravadas;
+
+            }
+            lblSumCantidad.Text = sumCantidad.ToString();
+            lblSumas.Text = sumas.ToString();
+            iva = sumas * (decimal)0.13;
+            lblIVA.Text = iva.ToString();
+            lblTotal.Text = (iva + sumas).ToString();
+        }
+
         #endregion
 
         #region Handles
@@ -104,6 +126,8 @@ namespace Facturacion.Forms
             cboArticulo.DataSource = listArticulos;
             cboArticulo.ValueMember = "ArticuloID";
             cboArticulo.DisplayMember = "ArticuloDescripcion";
+
+            txtFecha.Text = DateTime.Now.ToString();
             
         }
         private void cboCliente_SelectedValueChanged(object sender, EventArgs e)
@@ -117,6 +141,10 @@ namespace Facturacion.Forms
                     {
                         //Console.WriteLine(item.ClienteDireccion);
                         txtDireccion.Text = item.ClienteDireccion;
+                        txtDepartamento.Text = item.ClienteDepartamento;
+                        txtRegistro.Text = item.ClienteNumRegistro;
+                        txtNit.Text = item.ClienteNumNit;
+                        txtGiro.Text = item.ClienteGiro;
                     }
             }
             catch (InvalidCastException ex)
@@ -144,10 +172,78 @@ namespace Facturacion.Forms
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            string descripcion = cboArticulo.Text;
+            string cantidad = txtCantidad.Text.Trim();
+            string precio = txtPrecio.Text.Trim();
+            string ventasGravadas = (decimal.Parse(cantidad) * decimal.Parse(precio)).ToString();
+            string idArticulo = cboArticulo.SelectedValue.ToString();
 
+            dgvFactura.Rows.Add(new object[] { cantidad, descripcion, precio, ventasGravadas, "Eliminar", idArticulo });
+            txtCantidad.Text = "";
+            txtPrecio.Text = "";
+            cboArticulo.Focus();
+
+            totales();
+        }
+        private void dgvFactura_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != dgvFactura.Columns["Accion"].Index)
+                return;
+            dgvFactura.Rows.RemoveAt(e.RowIndex);
+
+            totales();
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            using (Model.DemoDB data = new Model.DemoDB())
+            {
+                using (var dataContextTrans = data.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        //FACTURAS
+                        Model.FACTURAS facturas = new Model.FACTURAS();
+                        //id_factura identity(1,1)
+                        facturas.fk_id_cliente = (int)cboCliente.SelectedValue;
+                        facturas.clientes_nombre = cboCliente.Text;
+                        facturas.clientes_direccion = txtDireccion.Text;
+                        facturas.clientes_departamento = txtDepartamento.Text;
+                        facturas.clientes_registro = txtRegistro.Text;
+                        facturas.clientes_num_nit = txtNit.Text;
+                        facturas.clientes_giro = txtGiro.Text;
+                        facturas.subtotal = decimal.Parse(lblSumas.Text.ToString());
+                        facturas.iva = decimal.Parse(lblIVA.Text.ToString());
+                        facturas.total = decimal.Parse(lblTotal.Text.ToString());
+                        facturas.total_letras = "numeros a letras";
+
+                        data.FACTURAS.Add(facturas);
+                        data.SaveChanges();
+
+                        foreach (DataGridViewRow gr in dgvFactura.Rows)
+                        {
+                            //FACTURAS_DETALLE
+                            Model.FACTURAS_DETALLE detFacturas = new Model.FACTURAS_DETALLE();
+                            //id_factura_detalle identity(1,1)
+                            detFacturas.fk_id_factura = facturas.id_factura;
+                            detFacturas.fk_id_articulo = int.Parse(gr.Cells[5].Value.ToString());
+                            detFacturas.articulos_descripcion = gr.Cells[1].Value.ToString();
+                            detFacturas.cantidad = int.Parse(gr.Cells[0].Value.ToString());
+                            detFacturas.precio_unitario = decimal.Parse(gr.Cells[2].Value.ToString());
+                            detFacturas.subtotal = decimal.Parse(gr.Cells[3].Value.ToString());
+
+                            data.FACTURAS_DETALLE.Add(detFacturas);
+                        }
+                        data.SaveChanges();
+                        dataContextTrans.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        dataContextTrans.Rollback();
+                    }
+                }
+            }
         }
         #endregion
-
 
     }
 }
