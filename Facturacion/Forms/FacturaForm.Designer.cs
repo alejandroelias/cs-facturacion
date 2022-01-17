@@ -63,12 +63,8 @@
             this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ArticuloId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.lblSumCantidad = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblNumeroLetras = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblIVA = new System.Windows.Forms.Label();
@@ -76,6 +72,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblSumas = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,7 +92,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -377,7 +376,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(899, 288);
-            this.splitContainer2.SplitterDistance = 165;
+            this.splitContainer2.SplitterDistance = 130;
             this.splitContainer2.TabIndex = 0;
             // 
             // dgvFactura
@@ -399,7 +398,7 @@
             this.dgvFactura.Location = new System.Drawing.Point(0, 0);
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFactura.Size = new System.Drawing.Size(899, 165);
+            this.dgvFactura.Size = new System.Drawing.Size(899, 130);
             this.dgvFactura.TabIndex = 0;
             this.dgvFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellClick);
             // 
@@ -447,100 +446,57 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.flowLayoutPanel1);
+            this.splitContainer3.Panel1.Controls.Add(this.btnSalir);
+            this.splitContainer3.Panel1.Controls.Add(this.btnGuardar);
             this.splitContainer3.Panel1.Controls.Add(this.lblSumCantidad);
-            this.splitContainer3.Panel1.Controls.Add(this.label11);
-            this.splitContainer3.Panel1.Controls.Add(this.label6);
             this.splitContainer3.Panel1.Controls.Add(this.label13);
+            this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.lblTotal);
-            this.splitContainer3.Panel2.Controls.Add(this.lblIVA);
-            this.splitContainer3.Panel2.Controls.Add(this.label7);
-            this.splitContainer3.Panel2.Controls.Add(this.label8);
-            this.splitContainer3.Panel2.Controls.Add(this.lblSumas);
-            this.splitContainer3.Panel2.Controls.Add(this.label10);
-            this.splitContainer3.Size = new System.Drawing.Size(899, 119);
-            this.splitContainer3.SplitterDistance = 674;
+            this.splitContainer3.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer3.Size = new System.Drawing.Size(899, 154);
+            this.splitContainer3.SplitterDistance = 441;
             this.splitContainer3.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnSalir);
-            this.flowLayoutPanel1.Controls.Add(this.btnGuardar);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(331, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 117);
-            this.flowLayoutPanel1.TabIndex = 20;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::Facturacion.Properties.Resources.logout;
-            this.btnSalir.Location = new System.Drawing.Point(3, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(73, 57);
-            this.btnSalir.TabIndex = 16;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Image = global::Facturacion.Properties.Resources.diskette;
-            this.btnGuardar.Location = new System.Drawing.Point(82, 3);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(111, 57);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblSumCantidad
             // 
             this.lblSumCantidad.AutoSize = true;
-            this.lblSumCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumCantidad.Location = new System.Drawing.Point(145, 12);
+            this.lblSumCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumCantidad.Location = new System.Drawing.Point(74, 12);
             this.lblSumCantidad.Name = "lblSumCantidad";
-            this.lblSumCantidad.Size = new System.Drawing.Size(14, 13);
+            this.lblSumCantidad.Size = new System.Drawing.Size(13, 13);
             this.lblSumCantidad.TabIndex = 17;
             this.lblSumCantidad.Text = "0";
             this.lblSumCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // lblNumeroLetras
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(51, 46);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Direccion";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "SON";
+            this.lblNumeroLetras.AutoSize = true;
+            this.lblNumeroLetras.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroLetras.Location = new System.Drawing.Point(6, 120);
+            this.lblNumeroLetras.Name = "lblNumeroLetras";
+            this.lblNumeroLetras.Size = new System.Drawing.Size(0, 13);
+            this.lblNumeroLetras.TabIndex = 14;
+            this.lblNumeroLetras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(12, 12);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 13);
+            this.label13.Size = new System.Drawing.Size(49, 13);
             this.label13.TabIndex = 19;
-            this.label13.Text = "Cantidad de articulos";
+            this.label13.Text = "Cantidad";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(56, 97);
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(177, 75);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(14, 13);
+            this.lblTotal.Size = new System.Drawing.Size(25, 25);
             this.lblTotal.TabIndex = 21;
             this.lblTotal.Text = "0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -548,10 +504,10 @@
             // lblIVA
             // 
             this.lblIVA.AutoSize = true;
-            this.lblIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIVA.Location = new System.Drawing.Point(56, 30);
+            this.lblIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIVA.Location = new System.Drawing.Point(177, 40);
             this.lblIVA.Name = "lblIVA";
-            this.lblIVA.Size = new System.Drawing.Size(14, 13);
+            this.lblIVA.Size = new System.Drawing.Size(13, 13);
             this.lblIVA.TabIndex = 20;
             this.lblIVA.Text = "0";
             this.lblIVA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -559,30 +515,30 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 12);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(119, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Sumas";
+            this.label7.Text = "Subtotal";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 30);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(115, 40);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 11;
-            this.label8.Text = "IVA";
+            this.label8.Text = "IVA(13%)";
             // 
             // lblSumas
             // 
             this.lblSumas.AutoSize = true;
-            this.lblSumas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumas.Location = new System.Drawing.Point(56, 12);
+            this.lblSumas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumas.Location = new System.Drawing.Point(177, 22);
             this.lblSumas.Name = "lblSumas";
-            this.lblSumas.Size = new System.Drawing.Size(14, 13);
+            this.lblSumas.Size = new System.Drawing.Size(13, 13);
             this.lblSumas.TabIndex = 18;
             this.lblSumas.Text = "0";
             this.lblSumas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -590,12 +546,49 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 97);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(109, 75);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.Size = new System.Drawing.Size(56, 24);
             this.label10.TabIndex = 13;
             this.label10.Text = "Total";
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Image = global::Facturacion.Properties.Resources.diskette;
+            this.btnGuardar.Location = new System.Drawing.Point(316, 5);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(111, 57);
+            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Facturacion.Properties.Resources.logout;
+            this.btnSalir.Location = new System.Drawing.Point(225, 5);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(73, 57);
+            this.btnSalir.TabIndex = 16;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblTotal);
+            this.groupBox3.Controls.Add(this.lblNumeroLetras);
+            this.groupBox3.Controls.Add(this.lblIVA);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.lblSumas);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(454, 154);
+            this.groupBox3.TabIndex = 22;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Totales";
             // 
             // FacturaForm
             // 
@@ -632,10 +625,10 @@
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -657,12 +650,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label lblNumeroLetras;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtExistencia;
         private System.Windows.Forms.Label lblSumCantidad;
@@ -671,7 +661,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblIVA;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtDepartamento;
         private System.Windows.Forms.Label label14;
@@ -690,6 +679,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticuloId;
         private System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.NumericUpDown txtPrecio;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.GroupBox groupBox3;
 
 
     }

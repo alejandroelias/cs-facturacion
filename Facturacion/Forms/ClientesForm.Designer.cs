@@ -42,6 +42,8 @@
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbnOut = new System.Windows.Forms.ToolStripButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,8 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboDepartamento = new System.Windows.Forms.ComboBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbnOut = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -216,6 +216,21 @@
             this.btnDelete.Text = "toolStripButton3";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tbnOut
+            // 
+            this.tbnOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbnOut.Image = global::Facturacion.Properties.Resources.logout;
+            this.tbnOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbnOut.Name = "tbnOut";
+            this.tbnOut.Size = new System.Drawing.Size(23, 22);
+            this.tbnOut.Text = "toolStripButton1";
+            this.tbnOut.Click += new System.EventHandler(this.tbnOut_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -315,6 +330,7 @@
             // dgvClientes
             // 
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -324,21 +340,6 @@
             this.dgvClientes.Size = new System.Drawing.Size(899, 271);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.Click += new System.EventHandler(this.dgvClientes_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tbnOut
-            // 
-            this.tbnOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbnOut.Image = global::Facturacion.Properties.Resources.logout;
-            this.tbnOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbnOut.Name = "tbnOut";
-            this.tbnOut.Size = new System.Drawing.Size(23, 22);
-            this.tbnOut.Text = "toolStripButton1";
-            this.tbnOut.Click += new System.EventHandler(this.tbnOut_Click);
             // 
             // ClientesForm
             // 

@@ -28,50 +28,30 @@ namespace Facturacion.Forms
         }
         private void btnIrClientes_Click(object sender, EventArgs e)
         {
-            if (formClientes == null)
-            {
 
                 formClientes = new Forms.ClientesForm();
                 formClientes.MdiParent = this;
-                formClientes.FormClosed += new FormClosedEventHandler(closeForms);
                 formClientes.Show();
-            }
-            else
-            {
-                formClientes.Activate();
-            }
         }
 
         private void btnIrArticulos_Click(object sender, EventArgs e)
         {
-            if (formArticulos == null)
-            {
 
                 formArticulos = new Forms.ArticulosForm();
                 formArticulos.MdiParent = this;
-                formArticulos.FormClosed += new FormClosedEventHandler(closeForms);
+                //formArticulos.FormClosed += new FormClosedEventHandler(closeForms);
                 formArticulos.Show();
-            }
-            else
-            {
-                formArticulos.Activate();
-            }
+       
         }
 
         private void btnIrFacturacion_Click(object sender, EventArgs e)
         {
-            if (formFacturas == null)
-            {
 
                 formFacturas = new Forms.FacturaForm();
                 formFacturas.MdiParent = this;
-                formFacturas.FormClosed += new FormClosedEventHandler(closeForms);
+                //formFacturas.FormClosed += new FormClosedEventHandler(closeForms);
                 formFacturas.Show();
-            }
-            else
-            {
-                formFacturas.Activate();
-            }
+
         }
 
         private void Main_Load(object sender, EventArgs e)

@@ -95,6 +95,8 @@ namespace Facturacion.Forms
             int sumCantidad = 0;
             decimal sumas = 0;
             decimal iva = 0;
+            Clases.ConvertirNumerosLetras numLetras = new Clases.ConvertirNumerosLetras();
+            string letras;
 
             foreach (DataGridViewRow gr in dgvFactura.Rows)
             {
@@ -102,14 +104,16 @@ namespace Facturacion.Forms
                 sumCantidad += cantidad;
 
                 decimal ventasGravadas = decimal.Parse(gr.Cells[3].Value.ToString());
-                sumas += ventasGravadas;
+                sumas += decimal.Round(ventasGravadas,2);
 
             }
             lblSumCantidad.Text = sumCantidad.ToString();
             lblSumas.Text = sumas.ToString();
-            iva = sumas * (decimal)0.13;
+            iva = decimal.Round(sumas * (decimal)0.13,2);
             lblIVA.Text = iva.ToString();
-            lblTotal.Text = (iva + sumas).ToString();
+            lblTotal.Text = decimal.Round((iva + sumas), 2).ToString();
+            letras = numLetras.Convertir(lblTotal.Text.ToString(), true, "DOLARES");
+            lblNumeroLetras.Text = letras;
         }
 
         #endregion
@@ -155,7 +159,7 @@ namespace Facturacion.Forms
             }
             catch (InvalidCastException ex)
             {
-                //throw;
+                //MessageBox.Show(ex.Message);
             }
 
         }
@@ -172,24 +176,33 @@ namespace Facturacion.Forms
             }
             catch (InvalidCastException ex)
             {
-                
-                //throw;
+
+                //MessageBox.Show(ex.Message);
             }
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string descripcion = cboArticulo.Text;
-            string cantidad = txtCantidad.Text.Trim();
-            string precio = txtPrecio.Text.Trim();
-            string ventasGravadas = (decimal.Parse(cantidad) * decimal.Parse(precio)).ToString();
-            string idArticulo = cboArticulo.SelectedValue.ToString();
+            if (txtCantidad.Value.Equals(0)|| txtPrecio.Value.Equals(0) || txtPrecio.Value.Equals(0.00) )
+            {
+                MessageBox.Show("Cantidad o precio vacio", "FACTURACION", MessageBoxButtons.OK);
+            }
+            else
+            {
+                string descripcion = cboArticulo.Text;
+                string cantidad = txtCantidad.Text.Trim();
+                string precio = txtPrecio.Text.Trim();
+                string ventasGravadas = (decimal.Parse(cantidad) * decimal.Parse(precio)).ToString();
+                string idArticulo = cboArticulo.SelectedValue.ToString();
 
-            dgvFactura.Rows.Add(new object[] { cantidad, descripcion, precio, ventasGravadas, "Eliminar", idArticulo });
-            txtCantidad.Text = "";
-            txtPrecio.Text = "";
-            cboArticulo.Focus();
+                dgvFactura.Rows.Add(new object[] { cantidad, descripcion, precio, ventasGravadas, "Eliminar", idArticulo });
+                txtCantidad.Text = "";
+                txtPrecio.Text = "";
+                cboArticulo.Focus();
 
-            totales();
+                totales();
+            }
+
+            
         }
         private void dgvFactura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -220,7 +233,7 @@ namespace Facturacion.Forms
                         facturas.subtotal = decimal.Parse(lblSumas.Text.ToString());
                         facturas.iva = decimal.Parse(lblIVA.Text.ToString());
                         facturas.total = decimal.Parse(lblTotal.Text.ToString());
-                        facturas.total_letras = "numeros a letras";
+                        facturas.total_letras = lblNumeroLetras.Text.ToString();
 
                         data.FACTURAS.Add(facturas);
                         data.SaveChanges();
@@ -247,6 +260,7 @@ namespace Facturacion.Forms
                     }
                     catch (Exception ex)
                     {
+                        //MessageBox.Show(ex.Message + ex.StackTrace);
                         dataContextTrans.Rollback();
                     }
                 }
@@ -258,9 +272,11 @@ namespace Facturacion.Forms
             this.Close();
         }
 
-        #region Validaciones
-        //TODO: Validaciones cantidad y precion !vacio
-        #endregion
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
     }
 }
