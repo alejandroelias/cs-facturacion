@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.txtGiro = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
@@ -51,9 +50,9 @@
             this.rbCredito = new System.Windows.Forms.RadioButton();
             this.rbContado = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDiasCredito = new System.Windows.Forms.TextBox();
             this.cboDepartamento = new System.Windows.Forms.ComboBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.txtDiasCredito = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +60,7 @@
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiasCredito)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -185,7 +185,7 @@
             // btnAdd
             // 
             this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Image = global::Facturacion.Properties.Resources.plus;
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
@@ -195,20 +195,22 @@
             // btnUpdate
             // 
             this.btnUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Image = global::Facturacion.Properties.Resources.edit;
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(23, 22);
             this.btnUpdate.Text = "toolStripButton2";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Image = global::Facturacion.Properties.Resources.x;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(23, 22);
             this.btnDelete.Text = "toolStripButton3";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label4
             // 
@@ -247,10 +249,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDiasCredito);
             this.groupBox1.Controls.Add(this.rbCredito);
             this.groupBox1.Controls.Add(this.rbContado);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtDiasCredito);
             this.groupBox1.Location = new System.Drawing.Point(111, 174);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 84);
@@ -285,18 +287,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 40);
+            this.label1.Location = new System.Drawing.Point(108, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Dias de credito";
-            // 
-            // txtDiasCredito
-            // 
-            this.txtDiasCredito.Location = new System.Drawing.Point(192, 36);
-            this.txtDiasCredito.Name = "txtDiasCredito";
-            this.txtDiasCredito.Size = new System.Drawing.Size(136, 20);
-            this.txtDiasCredito.TabIndex = 5;
             // 
             // cboDepartamento
             // 
@@ -308,11 +303,23 @@
             // 
             // dgvClientes
             // 
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(199, 24);
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvClientes.Location = new System.Drawing.Point(0, 0);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(240, 150);
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(639, 244);
             this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.Click += new System.EventHandler(this.dgvClientes_Click);
+            // 
+            // txtDiasCredito
+            // 
+            this.txtDiasCredito.Location = new System.Drawing.Point(192, 38);
+            this.txtDiasCredito.Name = "txtDiasCredito";
+            this.txtDiasCredito.Size = new System.Drawing.Size(120, 20);
+            this.txtDiasCredito.TabIndex = 19;
             // 
             // ClientesForm
             // 
@@ -333,6 +340,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiasCredito)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -346,7 +354,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbCredito;
         private System.Windows.Forms.RadioButton rbContado;
-        private System.Windows.Forms.TextBox txtDiasCredito;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -364,5 +371,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtGiro;
         private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.NumericUpDown txtDiasCredito;
     }
 }

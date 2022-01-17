@@ -39,22 +39,7 @@ namespace Facturacion.Forms
             }
             return listClientes;
         }
-        private static List<Model.ViewModel.ArticuloViewModel> getArticulos()
-        {
-            List<Model.ViewModel.ArticuloViewModel> listArticulos = new List<Model.ViewModel.ArticuloViewModel>();
-            using (Model.DemoDB data = new Model.DemoDB())
-            {
-                listArticulos = (from tbl in data.ARTICULOS
-                                select new Model.ViewModel.ArticuloViewModel
-                                {
-                                    ArticuloID = tbl.id_articulo,
-                                    ArticuloExistencia = tbl.existencia.Value, 
-                                    ArticuloDescripcion = tbl.descripcion
-                                }).ToList();
-            }
-            return listArticulos;
-        }
-        private static List<Model.ViewModel.ClienteViewModel> getClientesById(int idCliente)
+        private static List<Model.ViewModel.ClienteViewModel> getClientes(int idCliente)
         {
             List<Model.ViewModel.ClienteViewModel> listClientes = new List<Model.ViewModel.ClienteViewModel>();
             using (Model.DemoDB data = new Model.DemoDB())
@@ -75,7 +60,22 @@ namespace Facturacion.Forms
             }
             return listClientes;
         }
-        private static List<Model.ViewModel.ArticuloViewModel> getArticulosById(int idArticulo)
+        private static List<Model.ViewModel.ArticuloViewModel> getArticulos()
+        {
+            List<Model.ViewModel.ArticuloViewModel> listArticulos = new List<Model.ViewModel.ArticuloViewModel>();
+            using (Model.DemoDB data = new Model.DemoDB())
+            {
+                listArticulos = (from tbl in data.ARTICULOS
+                                select new Model.ViewModel.ArticuloViewModel
+                                {
+                                    ArticuloID = tbl.id_articulo,
+                                    ArticuloExistencia = tbl.existencia.Value, 
+                                    ArticuloDescripcion = tbl.descripcion
+                                }).ToList();
+            }
+            return listArticulos;
+        }
+        private static List<Model.ViewModel.ArticuloViewModel> getArticulos(int idArticulo)
         {
             List<Model.ViewModel.ArticuloViewModel> listArticulos = new List<Model.ViewModel.ArticuloViewModel>();
             using (Model.DemoDB data = new Model.DemoDB())
@@ -142,7 +142,7 @@ namespace Facturacion.Forms
             {
 
                 int idCliente = (int)cboCliente.SelectedValue;
-                List<Model.ViewModel.ClienteViewModel> listClientes = getClientesById(idCliente);
+                List<Model.ViewModel.ClienteViewModel> listClientes = getClientes(idCliente);
                     foreach (var item in listClientes)
                     {
                         //Console.WriteLine(item.ClienteDireccion);
@@ -164,7 +164,7 @@ namespace Facturacion.Forms
             try
             {
                 int idArticulo = (int)cboArticulo.SelectedValue;
-                List<Model.ViewModel.ArticuloViewModel> listArticulos = getArticulosById(idArticulo);
+                List<Model.ViewModel.ArticuloViewModel> listArticulos = getArticulos(idArticulo);
                     foreach (var item in listArticulos)
                     {
                         txtExistencia.Text = item.ArticuloExistencia.ToString();
@@ -253,14 +253,13 @@ namespace Facturacion.Forms
             }
         }
         #endregion
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         #region Validaciones
-
+        //TODO: Validaciones cantidad y precion !vacio
         #endregion
 
     }
